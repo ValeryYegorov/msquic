@@ -5,7 +5,7 @@ lttng destroy msquic 2> /dev/null
 dirprefix="msquic_lttng"
 num=`find ./* -maxdepth 0 -name "$dirprefix*" | wc -l`
 dirname=$dirprefix$num
-mkdir -p $dirname/data && lttng create msquic -o=./$dirname/data && sessionCreated=$? && lttng enable-event --userspace "CLOG_*" && lttng add-context --userspace --type=vpid --type=vtid && lttng start
+mkdir -p $dirname/data && lttng create msquic -o=./$dirname/data && sessionCreated=$? && lttng enable-event --userspace "*" && lttng add-context --userspace --type=vpid --type=vtid && lttng start
 if [ $? -eq 0 ]; then
     $*
     lttng stop

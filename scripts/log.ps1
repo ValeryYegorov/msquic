@@ -240,7 +240,7 @@ function Log-Start {
                 $Command = "lttng create $InstanceName -o=$TempLTTngDir"
                 Invoke-Expression $Command | Write-Debug
             }
-            lttng enable-event --userspace CLOG_* | Write-Debug
+            lttng enable-event --userspace CLOG* | Write-Debug
             lttng add-context --userspace --type=vpid --type=vtid | Write-Debug
             lttng start | Write-Debug
 
