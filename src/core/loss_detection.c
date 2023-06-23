@@ -1811,6 +1811,15 @@ QuicLossDetectionProcessTimerOperation(
     if (OldestPacket != NULL &&
         CxPlatTimeDiff32(OldestPacket->SentTime, TimeNow) >=
             MS_TO_US(Connection->Settings.DisconnectTimeoutMs)) {
+
+        QuicTraceEvent(
+                ConnLossDetectionTimerSet,
+                "[conn][%p] disconnect timed out %u us (max %u us).",
+                Connection,
+                CxPlatTimeDiff32(OldestPacket->SentTime, TimeNow),
+                MS_TO_US(Connection->Settings.DisconnectTimeoutMs),
+                LossDetection->ProbeCount);
+
         //
         // OldestPacket has been in the SentPackets list for at least
         // DisconnectTimeoutUs without an ACK for either OldestPacket or for any
