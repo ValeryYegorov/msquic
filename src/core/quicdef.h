@@ -299,7 +299,7 @@ CXPLAT_STATIC_ASSERT(QUIC_INITIAL_PACKET_LENGTH >= QUIC_MIN_INITIAL_PACKET_LENGT
 // expected acknowledgement for packets it has sent before it considers the
 // path dead.
 //
-#define QUIC_DEFAULT_DISCONNECT_TIMEOUT         16000   // 16 seconds, in ms
+#define QUIC_DEFAULT_DISCONNECT_TIMEOUT         125000   // 16 seconds, in ms
 
 //
 // The maximum allowable disconnect value that can be configured. Larger values
